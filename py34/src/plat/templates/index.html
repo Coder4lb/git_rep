@@ -12,7 +12,7 @@
 		<ol class="rounded-list">
 			{% for post in post_list %}
 				<li class="pure-g">
-					<a  onclick="choiceSong( '{{post.url}}' ,'{{post.image}}' )" href="javascript:void(0);">
+					<a  onclick="choiceSong( '{{post.url}}', '{{post.image}}','{{post.title}}','{{post.singer}}')" href="javascript:void(0);">
 						<h3 class="pure-u-1-4">{{post.title}}</h3>
 						<h3 class="pure-u-1-4">{{post.singer}}</h3>
 						<h3 class="pure-u-1-4">{{post.collection}}</h3>

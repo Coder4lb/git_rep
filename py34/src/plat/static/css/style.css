@@ -122,8 +122,8 @@ button:hover {
 /* Song Info */
 .info {
   	position: relative;
-	margin-top: 28px;
-	bottom: 10px;
+	margin-top: 22px;
+	bottom: 14px;
 	color: #fff;
 	text-align: center;
 	text-shadow: 1px 1px 3px #000;

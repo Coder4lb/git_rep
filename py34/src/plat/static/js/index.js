@@ -16,6 +16,9 @@ var progress = document.getElementById('progress');
 var playpause = document.getElementById("play-pause");
 var volume = document.getElementById("volume");
 var image = document.getElementById("image");
+var song = document.getElementById("song");
+var author = document.getElementById("author");
+
 var MEDIA_ROOT = "/media/";
 
 // audio.controls = false;
@@ -59,10 +62,12 @@ function updateProgress() {
 	if (audio.ended) resetPlayer();
 }
 
-function choiceSong( url , img ){
+function choiceSong( url , img , title , singer ){
 	resetPlayer();
 	audio.src = MEDIA_ROOT + url;
 	image.src = MEDIA_ROOT + img;
+	song.innerHTML = '<a href="#">' + title + '</a>';
+	author.innerHTML = '<a href="#">' + singer + '</a>';
 	togglePlayPause();
 }
 
