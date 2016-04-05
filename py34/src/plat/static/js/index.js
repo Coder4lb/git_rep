@@ -60,14 +60,15 @@ function updateProgress() {
 }
 
 function choiceSong( url , img ){
-	audio.ended = 1;
-	updateProgress();
+	resetPlayer();
 	audio.src = MEDIA_ROOT + url;
 	image.src = MEDIA_ROOT + img;
 	togglePlayPause();
 }
 
 function resetPlayer() {
+	var canvas = document.getElementById('progress');
+	var context = canvas.getContext('2d');
 	audio.currentTime = 0; context.clearRect(0,0,canvas.width,canvas.height);
 	playpause.title = "Play";
 	playpause.innerHTML = '<i class="fa fa-play fa-3x"></i>';
