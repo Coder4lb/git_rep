@@ -1,0 +1,122 @@
+/*Basic*/
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body{
+	margin: 0; 
+	min-height: 100%; 
+	background: #27AE60; 
+	font-family: 'Roboto Condensed', sans-serif; 
+	font-weight: 300; 
+}
+
+ol{
+    counter-reset: li;
+    list-style: none;
+    *list-style: decimal;
+    font: 14px 'trebuchet MS', 'lucida sans';
+    padding: 0;
+    margin-bottom: 4em;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+
+/*Layout*/
+.layout{
+	padding: 0;
+}
+
+.sidebar {
+    background: #27AE60;  
+    color: #FFFFFF;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+
+/* content */
+.content{
+    /*padding: 2em 1em 0;*/
+    margin-left: 25%;
+    position:absolute;
+    top:0;
+    bottom:0;
+}
+.postlist{
+
+}
+.post-top{
+    background:#27AE60
+}
+.post-top-font{
+    font-size: 20px;
+    color:#FFF;
+    padding-left: 1em; 
+}
+/* List */            
+
+.rounded-list a{
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em 2em;
+    *padding: .4em;
+    margin: .5em 0;
+    background: #66CC99;
+    color: #666;
+    text-decoration: none;
+    -moz-border-radius: .3em;
+    -webkit-border-radius: .3em;
+    border-radius: .3em;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -ms-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    transition: all .3s ease-out;   
+}
+
+.rounded-list a:hover{
+    background: #99CCCC
+}
+
+.rounded-list a:hover:before{
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);  
+}
+
+.rounded-list a:before{
+    content: counter(li);
+    counter-increment: li;
+    position: absolute; 
+    left: -1.3em;
+    top: 50%;
+    margin-top: -1.3em;
+    background: #87ceeb;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    border: .3em solid #fff;    
+    text-align: center;
+    font-weight: bold;
+    -moz-border-radius: 2em;
+    -webkit-border-radius: 2em;
+    border-radius: 2em;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -ms-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+}
+
+/*--------------------------------------*/
+
+.command{
+    margin-left: 75%;
+    position:absolute;
+    top:0;
+    bottom:0;
+}

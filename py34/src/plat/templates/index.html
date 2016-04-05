@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="posts">
+	<div class="postlist">
+		<div class="post-top pure-g">
+			<a href="#">
+				<h3 class="post-top-font pure-u-1-4">-歌曲标题-</h3>
+				<h3 class="post-top-font pure-u-1-4">-歌手-</h3>
+				<h3 class="post-top-font pure-u-1-4">-专辑-</h3>
+			</a>
+		</div>
+		<ol class="rounded-list">
+			{% for post in post_list %}
+				<li class="pure-g">
+					<a  onclick="choiceSong( '{{post.url}}' ,'{{post.image}}' )" href="javascript:void(0);">
+						<h3 class="pure-u-1-4">{{post.title}}</h3>
+						<h3 class="pure-u-1-4">{{post.singer}}</h3>
+						<h3 class="pure-u-1-4">{{post.collection}}</h3>
+					</a>
+				</li>
+			{% endfor %}
+		</ol>
+	</div>
+	
+
+	{% if post_list.object_list and post_list.paginator.num_pages > 1 %}
+      <div>
+      <ul class="pager">
+      {% if post_list.has_previous %}
+        <li><a href="?page={{ post_list.previous_page_number }}" class="pre">上一页</a></li>
+      {% endif %}
+
+      {% if post_list.has_next %}
+        <li><a href="?page={{ post_list.next_page_number }}" class="last">下一页</a></li>
+      {% endif %}
+      </ul>
+      </div>
+    {% endif %}
+
+</div>
+{% endblock %}
