@@ -21,7 +21,7 @@
 				<input type="checkbox" id="to-back"><!-- playlist toggle -->
 				<canvas id="progress" width="320" height="320"></canvas><!-- progress bar -->
 				<div id="player">
-					<audio id="audio">
+					<audio id="audio" loop="loop">
 						<source src="" type="audio/mpeg" codecs="mp3"></source>		
 					</audio>
 					<img id="image" src=""><!-- album cover -->
@@ -29,11 +29,11 @@
 					<input type="checkbox" id="to-lyrics"><!-- lyrics toggle -->
 					<div class="cover">
 						<div class="controls">
-							<button id="backward" title="Backward"><i class="fa fa-retweet fa-lg"></i></button>
+							<button id="retweet" title="Retweet" onclick="toggleRetweet()"><i class="fa fa-retweet fa-lg"></i></button>
 							<button id="backward" title="Backward"><i class="fa fa-backward fa-2x"></i></button>
 							<button id="play-pause" title="Play" onclick="togglePlayPause()"><i class="fa fa-play fa-3x"></i></button>
 							<button id="forward" title="Forward"><i class="fa fa-forward fa-2x"></i></button>
-							<button id="backward" title="Backward"><i class="fa fa-random fa-lg"></i></button>
+							<button id="retweet" title="random"><i class="fa fa-random fa-lg"></i></button>
 							<input id="volume" name="volume" min="0" max="1" step="0.1" type="range" onchange="setVolume()" />
 						</div><!-- #controls -->
 						<div class="info">

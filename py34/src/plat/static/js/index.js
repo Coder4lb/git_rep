@@ -59,8 +59,21 @@ function togglePlayPause() {
    }
 }
 
+function toggleRetweet(){
+    var retweet = document.getElementById("retweet");
+    if( audio.loop == true ){
+      audio.loop = false;
+      retweet.innerHTML = '<i class="fa fa-long-arrow-right fa-lg"></i>';
+      retweet.title = "Single";
+    }else{
+      audio.loop = true;
+      retweet.innerHTML = '<i class="fa fa-retweet fa-lg"></i>';
+      retweet.title = "Retweet";
+    }
+}
+
 function setVolume() {
-   audio.volume = volume.value * 3;
+   audio.volume = volume.value ;
 }
 
 function updateProgress() {	
@@ -79,7 +92,7 @@ function updateProgress() {
 	context.lineWidth = 10;
 	context.strokeStyle = '#26C5CB';
 	context.stroke();
-	if (audio.ended) resetPlayer();
+	if (audio.ended || audio.duration - audio.currentTime < 0.5  ) resetPlayer();
 }
 
 function choiceSong( url , img , title , singer , lyric ){
@@ -115,38 +128,36 @@ function choiceSong( url , img , title , singer , lyric ){
 function resetPlayer() {
 	var canvas = document.getElementById('progress');
 	var context = canvas.getContext('2d');
-	audio.currentTime = 0; context.clearRect(0,0,canvas.width,canvas.height);
-	playpause.title = "Play";
-	playpause.innerHTML = '<i class="fa fa-play fa-3x"></i>';
+	audio.currentTime = 0; 
+  context.clearRect(0,0,canvas.width,canvas.height);
+  if( audio.loop == false){
+    playpause.title = "Play";
+    playpause.innerHTML = '<i class="fa fa-play fa-3x"></i>';
+  }
 }
 
 function parseLyric(text) {
-	var lines = text.split('\n'),
-	pattern =  /\[\d{2}:\d{2}.\d{2}\]/g;
+  var lines = text.split('\n'),
+  pattern =  /\[\d{2}:\d{2}\.\d{2}\]/g;
 	var result = [];
-  var count = 0;
-	// while( !pattern.test(lines[0])){
-	// 	lines = lines.slice(1);
-	// };
 
-	for( i=0;i<lines.length; ){
-    if( !pattern.test(lines[i])){
-      lines.splice(i,1);
-    }else ++i;
-  };
-	// 	if(lines[i].length == 0 || lines[i].replace(/(^\s*)|(\s*$)/g,"") == "" || lines[i][0] !=='['){
-	// 		lines.pop();
-	// 	}else break;
-	// }
+  /* 去掉不含时间的无用行 */
+	 for( i=0;i<lines.length; ){
+      var time = lines[i].match(pattern);
+      if(time === null){
+        lines.splice(i,1);
+      }else i++;
+   }
+
 	lines.forEach(function(v /*数组元素值*/ , i /*元素索引*/ , a /*数组本身*/ ) {
         //提取出时间[xx:xx.xx]
-        var time = v.match(pattern),
+        time = v.match(pattern);
+       // console.log( v , time );
             //提取歌词
-            value = v.replace(pattern, '');
+        var value = v.replace(pattern, '');
         //因为一行里面可能有多个时间，所以time有可能是[xx:xx.xx][xx:xx.xx][xx:xx.xx]的形式，需要进一步分隔
         time.forEach(function(v1, i1, a1) {
             //去掉时间里的中括号得到xx:xx.xx
-            // alert(v1);
             if(v1 !== null ){
             	var t = v1.slice(1, -1).split(':');
             }
@@ -158,7 +169,6 @@ function parseLyric(text) {
     result.sort(function(a, b) {
         return a[0] - b[0];
     });
-	console.log(result);
     return result;
 }	
 
