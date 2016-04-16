@@ -90,6 +90,7 @@ button:hover {
       opacity: .9;
 }
 #lyricWrapper{
+    display: block;
     overflow:hidden;
     width: 80%;
     height: 40%;
@@ -103,10 +104,13 @@ button:hover {
     top:50%;
     height:100%;
     text-align: center;
-    color:#CCC;
+    color:#FFFFCC;
     font-family: 'Roboto Condensed', sans-serif; 
     font-size: 19px;
     /*text-shadow: 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000; */
+}
+.current-line{
+    color:#FFF;
 }
 #player {
     width: 300px;
@@ -159,7 +163,6 @@ img {
     top:10%;
     margin-left:-10px;
 }
-
 .to-bottom-label {
     bottom: 1%;
     margin-left: -10px;
@@ -323,9 +326,7 @@ button {
 .playlist::-webkit-scrollbar {
     display: none;
 }
-.current-line{
-    color:#FFF;
-}
+
 /*--------------------------------------*/
 /* content */
 .content{
@@ -334,7 +335,7 @@ button {
 }
 .post-top{
     width:80%;
-    margin: 40px auto;
+    margin: 1em auto;
 }
 .post-top span{
     font-size: 20px;
@@ -351,7 +352,7 @@ button {
 .rounded-list a{
     position: relative;
     display: block;
-    padding: .4em .4em .4em 2em;
+    padding: .2em .4em .2em 2em;
     *padding: .4em;
     margin: .5em 0;
     background: #66CC99;
@@ -406,11 +407,11 @@ button {
 
 .paginat{
     text-align: center;
-    margin-top:1em;
+    margin-top:7px;
 }
 .paginat ul li a{
     background-color:#66CC99;
-    color: #6666CC;
+    color: #FFFFCC;
 }
 
 /*--------------------------------------*/
@@ -418,4 +419,12 @@ button {
 .commend{
     background: #27AE60;
     height: 100%;
+}
+.footer{
+    position: absolute;
+    bottom:0;
+    width:100%;
+    text-align: center;
+    color:#FFF;
+    opacity: 0.4;
 }
