@@ -22,4 +22,7 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$' , 'plat.views.index' , name='index'),
+    url(r'^index/' , 'plat.views.index' , name='index'),
+    url(r'^login/' , 'plat.views.login_in' , name='login_in'),
+    url(r'^logout/' , 'plat.views.logout_out' , name='logout_out'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

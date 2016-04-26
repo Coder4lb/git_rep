@@ -95,15 +95,15 @@ function updateProgress() {
 	if (audio.ended || audio.duration - audio.currentTime < 0.5  ) resetPlayer();
 }
 
-function choiceSong( url , img , title , singer , lyric ){
+function choiceSong( song_id , title , singer ){
 	resetPlayer();
-	audio.src = MEDIA_ROOT + url;
-	image.src = MEDIA_ROOT + img;
+	audio.src = MEDIA_ROOT + 'songs/' + song_id + '.mp3';
+	image.src = MEDIA_ROOT + 'image/' + singer + '/' + song_id + '.jpg';
 	song.innerHTML = '<a href="#">' + title + '</a>';
 	author.innerHTML = '<a href="#">' + singer + '</a>';
     	
 	var request = new XMLHttpRequest();
-	request.open('GET', 'media/'+lyric , true );
+	request.open('GET', '/media/lyric/'+ song_id + '.lrc' , true );
 	request.responseType = 'text'; //默认就是text
 	//请求成功时
 	request.onload = function() {

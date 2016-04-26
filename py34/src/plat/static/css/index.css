@@ -4,6 +4,7 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:300);
 
 /*Basic*/
+/**, *:before, *:after { box-sizing: border-box; }*/
 body{
 	margin: 0; 
 	min-height: 100%; 
@@ -58,9 +59,31 @@ label:focus {
       top: 0;
       opacity: 0;
 }
-button:hover {
+.controls button:hover {
       color: #26C5CB;
 }
+/* header */
+.title , .header{
+    background: #27AE60;
+    opacity: 0.8;
+    height:3em;
+}
+.header{
+    text-align: right;
+}
+.header span{
+    color:#FFF;
+    font-size:1em;
+    font-weight: bold;
+}
+.title h2{
+    margin:0.3em; 
+    padding-left: 1em;
+    text-align: left;
+    color: #FFF;
+    font-size:2em;
+}
+
 /* Layout */
 .layout , .cover , #player , #flip-back, .playlist{
 	padding: 0;
@@ -74,15 +97,26 @@ button:hover {
 /* sidebar */
 .sidebar {
     background: #27AE60;  
-    height:100%;
+    height:90%;
 }
 #container {
     position: relative;
+    perspective: 550px;
     margin-top:10%;
     margin-left:auto;
     margin-right:auto;
     width: 320px;
     height: 320px;
+    -webkit-perspective: 550px;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
+.cover,
+.to-lyrics-label,
+.to-back-label {
+    opacity: .3;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
 }
 #container:hover .cover,
 #container:hover .to-bottom-label,
@@ -101,7 +135,7 @@ button:hover {
 }
 #lyricContainer{
     position: relative;
-    top:50%;
+    top:30%;
     height:100%;
     text-align: center;
     color:#FFFFCC;
@@ -116,7 +150,7 @@ button:hover {
     width: 300px;
     height: 300px;
     margin: auto ;
-    background: #27AE60;
+    background: #000;
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 2px 2px 20px 0 rgba(0,0,0,.3);
@@ -141,9 +175,10 @@ img {
     transition: .3s all ease-in-out;
     -webkit-transition: .3s all ease-in-out;
 }
-.to-back-label,
-.to-bottom-label {
+.to-back-label {
     position: absolute;
+    top:10%;
+    margin-left:-10px;
     left:50%;
     color: #FFF;
     width: 20px;
@@ -159,11 +194,18 @@ img {
 .to-bottom-label:hover {
     color: #26C5CB;
 }
-.to-back-label {
-    top:10%;
-    margin-left:-10px;
-}
 .to-bottom-label {
+    position: absolute;
+    left:50%;
+    color: #FFF;
+    width: 20px;
+    height: 20px;
+    opacity: .3;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    z-index: 500;
+    text-align: center;   
+    cursor: pointer;
     bottom: 1%;
     margin-left: -10px;
 }
@@ -179,7 +221,7 @@ img {
     color: #FFF;
     text-align: center;
 }
-button {
+.controls button {
     margin: 7px;
     color: #FFF;
     background: transparent;
@@ -249,7 +291,7 @@ button {
       margin: 4px;
 }
 #flip-back {
-    margin:auto;
+/*    margin:auto;*/
     width: 300px;
     height: 300px;
     background: #4D4D4D;
@@ -331,7 +373,7 @@ button {
 /* content */
 .content{
    background: #27AE60;
-   height:100%;
+   height:90%;
 }
 .post-top{
     width:80%;
@@ -380,8 +422,10 @@ button {
     -o-transform: rotate(360deg);
     transform: rotate(360deg);  
 }
-
-.rounded-list a:before{
+.posts{
+    font-size: 16px;
+}
+.rounded-list li a:before{
     content: counter(li);
     counter-increment: li;
     position: absolute; 
@@ -404,27 +448,52 @@ button {
     -o-transition: all .3s ease-out;
     transition: all .3s ease-out;
 }
-
+.rounded-list li a h3{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 .paginat{
     text-align: center;
-    margin-top:7px;
 }
-.paginat ul li a{
+.paginat li a{
     background-color:#66CC99;
     color: #FFFFCC;
 }
 
 /*--------------------------------------*/
 /*  recommendation*/
-.commend{
+
+.right_label{
     background: #27AE60;
-    height: 100%;
+    height: 90%;
+    text-align: left;
+    float:right;
+    color:#FFF;
 }
 .footer{
-    position: absolute;
-    bottom:0;
-    width:100%;
+    background:#27AE60 ;
     text-align: center;
     color:#FFF;
-    opacity: 0.4;
+    opacity: 0.8;
+}
+.recom_label{
+}
+.recom_label li{
+    text-align: left;
+    height:2em;
+}
+.recom_label li a{
+    color:#FFFFCC;
+} 
+.recom_label li a:hover{
+    color:#26C5CB;
+} 
+.recom_label li a i{
+    font-family: 'Roboto Condensed';
+    font-style:italic;
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
 }
